@@ -26,10 +26,12 @@ async def handle_command_start(message: Message):
 
 @dp.message(F.content_type == ContentType.TEXT)
 async def handle_existing_entry(message: Message):
-    link = tg_link_re.findall(message.text)[0]
-    if link is None:
+    link = tg_link_re.findall(message.text)
+    if not any(link) or link is None:
         await message.answer("Проверьте правильность ввода ссылки.")
         return
+    
+    link = link[0]
 
     data = await get_channel_data(link)
     if data is None:
