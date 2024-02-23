@@ -7,7 +7,7 @@ from app.data_collector import collect_from_link
 from config import BOT_TOKEN
 import re
 
-tg_link_re = re.compile(r"t\.me\/\+[a-zA-Z0-9]*")
+tg_link_re = re.compile(r"t\.me\/[\+a-zA-Z0-9]*")
 bot = Bot(BOT_TOKEN, parse_mode=ParseMode.HTML)
 dp = Dispatcher()
 
